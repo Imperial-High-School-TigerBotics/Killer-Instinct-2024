@@ -7,18 +7,21 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.BaseConstants;
 import frc.robot.Constants.OIConstants;
-
+import frc.robot.commands.ArmCmd;
 import frc.robot.commands.SwerveJoystickCmd;
-
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.SwerveSubsystem;
 
 public class RobotContainer {
 
     private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+    private Arm arm;
+    private ArmCmd armCmd;
 
     private final Joystick driverJoystick = new Joystick(OIConstants.kDriverControllerPort);
 
     public static XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
+    public static XboxController intakeController = new XboxController(OIConstants.kControlsControllerPort);
 
     public RobotContainer() {
         swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
@@ -28,6 +31,9 @@ public class RobotContainer {
                 () -> driverJoystick.getRawAxis(OIConstants.kDriverRotAxis),
                 () -> !driverJoystick.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
 
+        arm = new Arm();
+        armCmd = new ArmCmd(arm, intakeController);
+        arm.setDefaultCommand(armCmd);
 
         configureButtonBindings();
     }

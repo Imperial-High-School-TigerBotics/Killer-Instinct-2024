@@ -10,11 +10,40 @@ public final class Constants {
     public static final class BaseConstants{
         //Pigeon 2.0 Gyro
         public static final int PigeonID = 13;
+
+        public static final int LiftMotor1ID = 20;
+        public static final int LiftMotor2ID = 21;
+        public static final int IntakeMotorID = 16;
+        public static final int ShootingMotor1ID = 14;
+        public static final int ShootingMotor2ID = 15;
+
+        public static final int liftCoderID = 17;
+    }
+
+    public static final class ShooterConfig {
+        public static final double DownPosition = -0.38;
+        public static final double AmpPosition = -1.141289;
+        public static final double SpeakerPosition = -0.77;
+        public static final double LongShotPosition = -0.83;
+
+        // Higher = smoother (1 = normal)
+        public static final double UpSmoothness = 1;
+        public static final double DownSmoothness = 3;
+
+        public static final boolean Shooter1Reversed = true;
+        public static final boolean Shooter2Reversed = false;
     }
 
     public static final class SpeedScaleFactors{
         public static final double SwerveMaxSpeed = 0.75; //Speed in percentage
         public static final double SwerveMaxTurnSpeed = 0.20;
+
+        public static final double LifterMaxUpSpeed = 0.3;
+        public static final double LifterMaxDownSpeed = 0.1;
+
+        public static final double ShootingSpeed = 0.8;
+        public static final double ShootingThreshold = 0.2;
+        public static final double AmpShootingSpeed = 0.2;
     }
 
 
@@ -113,6 +142,6 @@ public final class Constants {
         public static final int kDriverRotAxis = 4;
         public static final int kDriverFieldOrientedButtonIdx = 1;
 
-        public static final double kDeadband = 0.12;
+        public static final double kDeadband = 0.08;
     }
 }
